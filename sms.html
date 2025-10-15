@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>⚡ Tahzib Rajpoot— SmS BomBer ⚡ —</title>
+
+  <!-- Your monetag meta -->
+  <meta name="monetag" content="b805f1bd7c6023d0341a4d15bd8fe547">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --card-bg: rgba(255,255,255,0.95);
+      --accent-1: #ff4d7e;
+      --accent-2: #ff8a80;
+      --accent-3: #ff2d55;
+      --muted: #6b7280;
+      --telegram-blue: #0088cc;
+    }
+
+    *{ box-sizing: border-box; }
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(120deg, #0f0b16 0%, #12092a 50%, #1b0b18 100%);
+      overflow:hidden;
+      color:#0f172a;
+    }
+
+    .bg-blobs{ position:fixed; inset:0; z-index:0; mix-blend-mode:screen; pointer-events:none; }
+    .blob{ position:absolute; width:60vmax; height:60vmax; filter:blur(80px); opacity:0.75; border-radius:48%; animation:float 9s ease-in-out infinite alternate; }
+    .blob.a{ background:radial-gradient(circle at 30% 30%, var(--accent-1), transparent 40%); left:8%; top:12%; animation-duration:10s; }
+    .blob.b{ background:radial-gradient(circle at 70% 70%, var(--accent-2), transparent 40%); left:92%; top:18%; animation-duration:11s; }
+    .blob.c{ background:radial-gradient(circle at 50% 50%, var(--accent-3), transparent 40%); left:50%; top:84%; animation-duration:13s; }
+    @keyframes float{ from{transform:translate(-50%,-50%) scale(1) rotate(0deg);} to{transform:translate(-50%,-42%) scale(1.08) rotate(8deg);} }
+
+    header.appbar{ position:fixed; top:18px; left:50%; transform:translateX(-50%); width:92%; max-width:640px; z-index:5; display:flex; align-items:center; justify-content:center; }
+    .appbar-inner{ display:flex; align-items:center; justify-content:center; gap:12px; width:100%; background:rgba(255,255,255,0.03); border-radius:999px; padding:8px 14px; box-shadow:0 6px 24px rgba(0,0,0,0.36); backdrop-filter:blur(6px); }
+    .logo-left,.logo-right{ width:40px; height:40px; border-radius:50%; overflow:hidden; background:rgba(255,255,255,0.05); }
+    .logo-left img,.logo-right img{ width:100%; height:100%; object-fit:cover; }
+    .app-title{ color:white; font-weight:700; font-size:15px; text-shadow:0 2px 10px rgba(0,0,0,0.6); }
+
+    .wrap{ height:100%; display:flex; align-items:center; justify-content:center; z-index:2; position:relative; padding:28px 14px; }
+    .card{ width:100%; max-width:460px; background:var(--card-bg); border-radius:16px; padding:22px; box-shadow:0 18px 50px rgba(2,6,23,0.7); border:1px solid rgba(255,255,255,0.6); backdrop-filter:blur(8px); }
+
+    .card h2{ margin:0 0 6px 0; font-size:20px; color:#0f172a; }
+    .hint{ color:var(--muted); font-size:13px; margin-bottom:12px; }
+
+    .field{ margin-bottom:8px; }
+    input, select{ width:100%; padding:14px 16px; border-radius:12px; border:1px solid rgba(15,23,42,0.06); background:rgba(255,255,255,0.98); font-size:16px; color:#0f172a; }
+
+    .controls{ display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; }
+    button.primary{ flex:1; padding:12px 14px; border:none; border-radius:12px; background:linear-gradient(90deg,var(--accent-3),var(--accent-1)); color:white; font-weight:600; cursor:pointer; }
+    button.telegram{ flex:1; background: var(--telegram-blue); border:none; border-radius:12px; color:white; font-weight:600; cursor:pointer; }
+    button.telegram:hover{ background:#006699; }
+
+    .message{ margin-top:14px; text-align:center; font-size:15px; min-height:22px; color:#0f172a; }
+    .small{ font-size:12px; color:var(--muted); margin-top:10px; text-align:center; }
+  </style>
+</head>
+<body>
+
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob a"></div>
+    <div class="blob b"></div>
+    <div class="blob c"></div>
+  </div>
+
+  <header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo-left">
+      <img src="images/kami_logo.png" alt="Kami Flex Logo">
+    </div>
+    <div class="app-title">⚡ Tahzib Rajpoot— SmS BomBer ⚡</div>
+    <div class="logo-right">
+      <img src="images/kami_logo.png" alt="Kami Flex Logo">
+    </div>
+  </div>
+</header>
+
+  <main class="wrap">
+    <section class="card" id="card">
+      <h2>⚡ Tahzib Rajpoot— SmS BomBer ⚡</h2>
+      <div class="hint">Please enter your number starting with 03, 3, or 92</div>
+
+      <div class="field">
+        <input id="numberInput" type="tel" placeholder="e.g. 03012345678 or 3012345678 or 923012345678">
+      </div>
+
+      <div class="field">
+        <input id="numTypes" type="number" min="2" placeholder="Number of Register">
+      </div>
+
+      <div class="field">
+        <input id="delayTime" type="number" min="1" placeholder="Delay (seconds)">
+      </div>
+
+      <div class="controls">
+        <button class="primary" id="sendBtn">Send SMS</button>
+        <button class="telegram" id="tgBtn" type="button">Join Telegram</button>
+      </div>
+
+      <div id="responseMsg" class="message"></div>
+      <div class="small">😈 Tahzib Rajpoot— SmS BomBer 😈</div>
+    </section>
+  </main>
+
+  <script>
+    // Elements
+    const sendBtn = document.getElementById('sendBtn');
+    const tgBtn = document.getElementById('tgBtn');
+    const numberInput = document.getElementById('numberInput');
+    const numTypes = document.getElementById('numTypes');
+    const delayTime = document.getElementById('delayTime');
+    const responseMsg = document.getElementById('responseMsg');
+
+    // Telegram button opens channel
+    tgBtn.addEventListener('click', () => {
+      window.open('https://t.me/Kami_Flex2', '_blank');
+    });
+
+    // Helper: normalize phone as your client expects
+    function normalizeNumber(raw) {
+      let n = raw.replace(/\D/g, '');
+      if (!n) return '';
+      if (n.startsWith('0')) return '92' + n.substring(1);
+      if (n.startsWith('3')) return '92' + n;
+      if (n.startsWith('92')) return n;
+      return ''; // invalid
+    }
+
+    // Send action -> POST to /api/send
+    sendBtn.addEventListener('click', async () => {
+      responseMsg.textContent = '';
+      responseMsg.style.color = '#0f172a';
+
+      let phoneRaw = numberInput.value.trim();
+      const amount = parseInt(numTypes.value, 10);
+      const delay = parseInt(delayTime.value, 10);
+
+      if (!phoneRaw || !amount || !delay) {
+        responseMsg.textContent = 'Please fill all fields!';
+        responseMsg.style.color = 'red';
+        return;
+      }
+
+      const phone = normalizeNumber(phoneRaw);
+      if (!phone) {
+        responseMsg.textContent = 'Wrong format — start with 0, 3, or 92';
+        responseMsg.style.color = o'red';
+        return;
+      }
+
+      // UI feedback
+      sendBtn.disabled = true;
+      sendBtn.textContent = '⏳ Sending...';
+      responseMsg.textContent = 'Processing...';
+
+      try {
+        const resp = await fetch('/api/send', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ phone, amount, delaySeconds: delay })
+        });
+
+        const data = await resp.json();
+
+        if (resp.ok && data) {
+          if (data.status === 'success' || data.success === true) {
+            responseMsg.textContent = data.message || '✅ Success — job accepted (simulated).';
+            responseMsg.style.color = '#0b8454';
+          } else {
+            responseMsg.textContent = data.message || '❌ Error from API';
+            responseMsg.style.color = '#c62828';
+          }
+        } else {
+          responseMsg.textContent = data && data.message ? data.message : '❌ API error';
+          responseMsg.style.color = '#c62828';
+        }
+      } catch (err) {
+        responseMsg.textContent = '⚠️ Network error — check your connection';
+        responseMsg.style.color = '#c04b4b';
+      } finally {
+        sendBtn.disabled = false;
+        sendBtn.textContent = 'Send SMS';
+      }
+    });
+
+    // small: prevent non-digits
+    numberInput.addEventListener('input', e => {
+      e.target.value = e.target.value.replace(/[^\d]/g, '');
+    });
+  </script>
+
+  <!-- Monetag / external tag (placed before closing body) -->
+  <script src="https://fpyf8.com/88/tag.min.js" data-zone="174168" async data-cfasync="false"></script>
+</body>
+</html>

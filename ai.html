@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>⚡ Tahzib Rajpoot— AI Image Generator ⚡</title>
+<link rel="icon" href="images/kami_logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- Monetag meta -->
+<meta name="monetag" content="b805f1bd7c6023d0341a4d15bd8fe547">
+
+<!-- Google AdSense -->
+<meta name="google-adsense-account" content="ca-pub-3726211792846627">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3726211792846627"
+     crossorigin="anonymous"></script>
+
+<style>
+:root{
+  --accent1:#00eaff;
+  --accent2:#ff007f;
+  --bg-dark:#0b0c1a;
+  --card-bg:rgba(255,255,255,0.05);
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif;}
+body{
+  background:linear-gradient(120deg,#0b0c1a,#12092a,#1b0b18);
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  min-height:100vh;
+  padding:20px;
+}
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  width:100%;
+  max-width:480px;
+  background:rgba(255,255,255,0.03);
+  border-radius:999px;
+  padding:8px 14px;
+  box-shadow:0 6px 24px rgba(0,0,0,0.36);
+  backdrop-filter:blur(6px);
+  margin-top:20px;
+}
+header img{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid rgba(255,255,255,0.2);
+}
+header h1{
+  font-size:18px;
+  font-weight:700;
+  text-align:center;
+  flex:1;
+  margin:0 10px;
+  background:linear-gradient(90deg,#00eaff,#ff007f,#ffea00,#00eaff,#ff007f);
+  background-size:300% 100%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:gradientMove 4s linear infinite;
+}
+@keyframes gradientMove{
+  0%{background-position:0% 0%;}
+  50%{background-position:100% 0%;}
+  100%{background-position:0% 0%;}
+}
+.card{
+  width:100%;
+  max-width:480px;
+  background:var(--card-bg);
+  border-radius:16px;
+  padding:24px;
+  margin-top:40px;
+  border:1px solid rgba(255,255,255,0.2);
+  box-shadow:0 0 30px rgba(0,234,255,0.15);
+  backdrop-filter:blur(6px);
+}
+h2{text-align:center;margin-bottom:15px;color:var(--accent1);}
+input, select{
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  border:none;
+  background:rgba(255,255,255,0.1);
+  color:white;
+  margin-bottom:12px;
+  font-size:15px;
+  outline:none;
+}
+input:focus, select:focus{box-shadow:0 0 10px var(--accent1);}
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(90deg,var(--accent2),var(--accent1));
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+  margin-bottom:12px;
+}
+button:hover{transform:scale(1.05);box-shadow:0 0 15px var(--accent1);}
+#loader{display:none;text-align:center;margin-top:18px;}
+.loader{
+  border:5px solid rgba(255,255,255,0.1);
+  border-top:5px solid var(--accent1);
+  border-radius:50%;
+  width:45px;
+  height:45px;
+  animation:spin 1s linear infinite;
+  margin:10px auto;
+}
+@keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+#result{text-align:center;margin-top:20px;}
+#result img{
+  max-width:100%;
+  max-height:80vh;
+  border-radius:14px;
+  box-shadow:0 0 20px rgba(0,234,255,0.2);
+}
+.download-single{
+  margin-top:6px;
+  padding:6px 10px;
+  border-radius:10px;
+  background:linear-gradient(90deg,var(--accent1),var(--accent2));
+  color:#000;
+  font-weight:600;
+  cursor:pointer;
+  display:inline-block;
+}
+#message{margin-top:10px;text-align:center;font-size:14px;color:#ff5555;}
+footer{margin-top:40px;text-align:center;font-size:13px;color:#aaa;}
+/* Top ad container */
+.ad-top{width:100%;max-width:480px;margin:18px 0 0 0;display:flex;justify-content:center;}
+</style>
+</head>
+<body>
+
+<header>
+  <img src="images/kami_logo.png" alt="Logo Left">
+  <h1>⚡ Kami Flex — AI Image Generator ⚡</h1>
+  <img src="images/kami_logo.png" alt="Logo Right">
+</header>
+
+<!-- Top AdSense ad -->
+<div class="ad-top" aria-hidden="true">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-3726211792846627"
+       data-ad-slot="3172858862"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+    try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+  </script>
+</div>
+
+<section class="card">
+  <h2>🎨 Generate AI Image</h2>
+  <input id="prompt" type="text" placeholder="Describe your image (e.g. neon cyberpunk city)">
+  <select id="size">
+    <option value="512x512">512 × 512</option>
+    <option value="768x768">768 × 768</option>
+    <option value="1024x1024">1024 × 1024</option>
+  </select>
+  <button id="generateBtn">🖌️ Generate Image</button>
+  <button id="telegramBtn">📢 Join Telegram</button>
+  <div id="loader"><div class="loader"></div><p>Generating your AI image...</p></div>
+  <div id="message"></div>
+  <div id="result"></div>
+</section>
+
+<footer>💫 Powered by Kami Flex AI — 2025</footer>
+
+<!-- Monetag script -->
+<script src="https://fpyf8.com/88/tag.min.js" data-zone="174168" async data-cfasync="false"></script>
+
+<script src="ai.js"></script>
+</body>
+</html>
